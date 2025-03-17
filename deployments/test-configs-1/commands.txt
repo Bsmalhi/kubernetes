@@ -1,0 +1,26 @@
+# Deployment
+kubectl get deployments -A
+kubectl apply -f deployment.yaml
+kubectl describe deployments my-app -A
+kubectl rollout status deployment my-app
+
+# Service
+kubectl get service -A
+kubectl apply -f service.yaml
+kubectl describe service my-service -A
+kubectl get service my-service -o yaml
+kubectl get endpoints -A  # check pod IPs linked to service
+
+# ConfigMaps
+kubectl get configmaps | k get cm -A
+k describe configmaps my-config
+kubectl create configmap my-config --from-literal=LOG_LEVEL=debug
+
+# Secrets
+k get secrets
+k describe secret my-secret
+k create secret generic my-secret --from-literal=DB_PASSWORD=password
+echo cGFzc3dvcmQ= | base64 --decode # decoding base64 for debugging
+
+
+
